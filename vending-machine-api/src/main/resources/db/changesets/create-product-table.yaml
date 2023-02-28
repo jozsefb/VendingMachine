@@ -1,0 +1,44 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-product-table
+      author: jozsef.benczedi
+      changes:
+        - createTable:
+            tableName: product
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  defaultValueComputed: gen_random_uuid()
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: seller_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+              - column:
+                  name: product_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: cost
+                  type: int
+                  defaultValue: 1
+              - column:
+                  name: amount_available
+                  type: int
+                  defaultValue: 0
+              - column:
+                  name: created_date
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_modified_date
+                  type: datetime
+                  constraints:
+                    nullable: false

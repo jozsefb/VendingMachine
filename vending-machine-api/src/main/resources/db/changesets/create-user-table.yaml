@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-user-table
+      author: jozsef.benczedi
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  defaultValueComputed: gen_random_uuid()
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: username
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: password
+                  type: varchar(255)
+              - column:
+                  name: deposit
+                  type: int
+                  defaultValue: 0
+              - column:
+                  name: role
+                  type: varchar
+              - column:
+                  name: created_date
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_modified_date
+                  type: datetime
+                  constraints:
+                    nullable: false
